@@ -1,0 +1,31 @@
+.userPage {
+    text-align: center;
+}
+
+.returnHomeBtn{
+    background-color: yellow;
+    color:red;
+    position: fixed;
+    top:10px;
+    left:90%;
+    z-index:20;
+    border:none;
+}
+
+.title {
+    font-size: 50px;
+}
+
+.userPhoto {
+    width:250px;
+    position: absolute;
+    top:20px;
+    left:20px   
+}
+
+/* .projectPhoto {
+    width:80%;
+    position:relative;
+    left:30%;
+    top:10%
+} */
