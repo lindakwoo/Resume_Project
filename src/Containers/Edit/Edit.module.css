@@ -1,0 +1,67 @@
+.Edit{
+    display:grid;
+    height:auto;
+    min-height:100vh;
+    background-color: rgb(189, 152, 206);
+    font-size:24px;
+}
+
+.User{
+    display:flex;
+    align-items:space-around;
+    justify-content:flex-start;
+}
+
+.UserInfo{
+    display:flex;
+    flex-direction:column;
+    align-items:flex-start;
+    justify-content:flex-start;
+    margin-left:20px;
+    margin-top:20px;
+}
+
+.UserPhoto{
+    display:flex;
+    flex-direction:column;
+    align-items:flex-start;
+    justify-content:space-around;
+    margin-left:20px;
+    margin-top:20px;
+}
+
+.UserPhoto button{
+    width:auto;
+}
+
+.UserPhoto img{
+    width:100px;
+}
+
+
+.ChangesToPerson{
+    display:flex;
+    flex-direction: column;
+    justify-content: center;
+    height:auto;
+    width:auto;
+}
+
+.Projects{
+    display:flex;
+    flex-direction:column;
+    align-items:flex-start;
+    justify-content:flex-start;
+}
+
+img{
+    width:150px;
+    height:auto;
+}
+input{
+    font-size:24px;
+}
+
+textarea{
+    font-size:24px;
+}

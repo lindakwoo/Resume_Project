@@ -1,0 +1,20 @@
+removeItem(itemId) {
+  const itemRef = firebase.database().ref(`/items/${itemId}`);
+  itemRef.remove();
+}
+
+
+{this.state.items.map((item) => {
+    return (
+      <li key={item.id}>
+        <h3>{item.title}</h3>
+        <p>brought by: {item.user}</p>
+        <button onClick={() => this.removeItem(item.id)}>Remove Item</button>
+      </li>
+    )
+  })
+}
+
+
+
+https://thelastmile.udemy.com/course/react-2nd-edition/learn/lecture/7900256#overview
