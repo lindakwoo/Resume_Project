@@ -13,7 +13,7 @@
     /* grid-template-areas:
     "I H H H H H H H"
     "S S C C C C C C"; */
-    grid-auto-rows: 100px;
+    grid-auto-rows: 200px;
     /* justify-items:center;   */
 }
 

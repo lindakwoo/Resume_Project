@@ -110,7 +110,7 @@ class NewUser extends Component {
             <div className = {classes.CustomChooseFileContainer}>
                 <label className = {classes.CustomFileUpload}>
                     <input className = {classes.ChooseFile} type = "file" onChange = {this.photoFileSelectedHandler}/>
-                    <div>Choose File</div>
+                    <div>Choose Photo</div>
                 </label>
                 {this.state.selectedUserPhotoFile? <div>{this.state.selectedUserPhotoFile["name"]}</div>:<div></div>}
             </div>

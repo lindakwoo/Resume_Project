@@ -1,6 +1,6 @@
 import React, {Component} from 'react';
-import {storage} from '../../../../../firebase';
-import firebase from '../../../../../firebase';
+import {storage} from '../../../../firebase';
+import firebase from '../../../../firebase';
 import classes from './JobEdit.module.css';
 
 
