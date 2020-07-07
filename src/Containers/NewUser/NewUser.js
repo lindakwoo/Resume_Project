@@ -2,6 +2,7 @@ import React, {Component} from 'react';
 import {storage} from '../../firebase';
 import firebase from '../../firebase';
 import classes from './NewUser.module.css';
+import Spinner from '../../UI/Spinner/Spinner';
 
 class NewUser extends Component {
   constructor(props){
@@ -13,7 +14,8 @@ class NewUser extends Component {
       username:"",
       description:"",
       userPhotoURL:"",
-      persons:[]
+      persons:[],
+      loading:false
     }
   }
 
@@ -78,6 +80,7 @@ class NewUser extends Component {
   
   fileUploadHandler = ()=>{
     if(this.state.selectedUserPhotoFile){
+      this.setState({loading:true})
         const uploadTask = storage.ref(`images/${this.state.selectedUserPhotoFile.name}`).put(this.state.selectedUserPhotoFile);
         uploadTask.on(
             "state_changed",
@@ -91,7 +94,8 @@ class NewUser extends Component {
                 .child(this.state.selectedUserPhotoFile.name)
                 .getDownloadURL()
                 .then(url=>{
-                    this.setState({userPhotoURL:url})
+                    this.setState({userPhotoURL:url});
+                    this.setState({loading:false})
                 });
             }
         )
@@ -102,6 +106,10 @@ class NewUser extends Component {
 
  
   render(){
+    let loading = <div></div>
+    if(this.state.loading){
+      loading = <Spinner/>
+    }
     return (
       <div className={classes.NewUser}>
           <div className = {classes.LeftSide}>
@@ -118,6 +126,7 @@ class NewUser extends Component {
         </div> 
         <div className = {classes.RightSide}>
             <img src = {this.state.userPhotoURL|| "http://via.placeholder.com/300"}/>
+            {loading}
             <button className = {classes.AddPerson} onClick = {this.handleAddNewPerson}>Submit</button>
         </div>    
       </div>

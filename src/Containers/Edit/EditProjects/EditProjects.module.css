@@ -1,0 +1,13 @@
+.ProjectsContainer{
+    display:grid;
+}
+.CurrentProjects{
+    display:grid;
+    grid-template-rows: 350px;
+    grid-auto-rows:350px;
+}
+
+.NewProjectContainer h3{
+    margin-top: 20px;
+
+}

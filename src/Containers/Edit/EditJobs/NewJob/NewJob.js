@@ -22,31 +22,43 @@ class NewJob extends Component {
       let jobEmployer=this.state.jobEmployer
       let jobTitle=this.state.jobTitle;
       let jobDescription = this.state.jobDescription;
-      const jobsRef = firebase.database().ref(`persons/${personId}/jobs`);
-      jobsRef.push({
+      let newJob = {
         "jobEmployer":jobEmployer,
         "jobTitle":jobTitle,
         "jobDescription":jobDescription,
-      })
+      };
+      const jobsRef = firebase.database().ref(`persons/${personId}/jobs`);
+      let newRef = jobsRef.push(newJob);
+      let jobId = newRef.key;
       this.setState({jobTitle:"", jobDescription:"", jobEmployer:""});
+      newJob["id"] = jobId;
+      this.props.addJobToEdit(newJob);
     }
 
   render(){
 
     return (
-      <div className = {classes.NewJob}>
-           <label>Employer:</label>
-          <input type="text" onChange = {this.handleChange} value = {this.state.jobEmployer} name = "jobEmployer" placeholder = "Employer"/>
-          <label>Job Title:</label>
-          <input type="text" onChange = {this.handleChange} value = {this.state.jobTitle} name = "jobTitle" placeholder = "Job Title"/>
-          <label>Job Description:</label>
-          <textarea cols = "45" rows="5" type = "textarea" onChange={this.handleChange} value = {this.state.jobDescription} name = "jobDescription" placeholder = "Job Description"/>
-          <button onClick = {this.handleAddNewJob} >submit new job</button>
+      <div className = {classes.NewJobContainer}>
+        <div className = {classes.NewJob}>
+          <div className = {classes.JobEmployer}>
+              <label>Employer:</label>
+              <input type="text" onChange = {this.handleChange} value = {this.state.jobEmployer} name = "jobEmployer" placeholder = "Employer"/>
+          </div>
+          <div className = {classes.JobTitle}>
+            <label>Job Title:</label>
+            <input type="text" onChange = {this.handleChange} value = {this.state.jobTitle} name = "jobTitle" placeholder = "Job Title"/>
+          </div>
+          <div className = {classes.JobDescription}>
+            <label>Job Description:</label>
+            <textarea cols = "45" rows="5" type = "textarea" onChange={this.handleChange} value = {this.state.jobDescription} name = "jobDescription" placeholder = "Job Description"/>
+          </div>
+        </div>
+        <button className = {classes.AddNewJob}onClick = {this.handleAddNewJob} >submit new job</button>
       </div>
-        
     );
   } 
 }
+
 
 
 // export default Radium(UserPage);

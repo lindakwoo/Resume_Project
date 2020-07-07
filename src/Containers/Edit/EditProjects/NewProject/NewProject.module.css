@@ -1,0 +1,137 @@
+.NewProjectContainer{
+    position:relative;
+    height:350px;
+    border-bottom: slategray solid 1px;
+}
+
+.NewProject{
+    display:grid;
+    grid-template-rows: 300px;
+    grid-template-columns: 50% 50%;
+}
+
+.ProjectInfo{
+    display:grid;
+    justify-items: start;
+    margin:30px 10px 10px 50px;
+    grid-template-rows:repeat(3,50px) 100px;
+    align-items: space-around;
+}
+
+.ProjectInfo label{
+    align-self: center;
+}
+
+.ProjectInfo input{
+    align-self:start;
+    color:orangered;
+    font-size:20px;
+    border:none;
+}
+
+
+.ProjectPhoto{
+    display:grid;
+    justify-items:start;
+    grid-template-rows:auto;
+    margin:35px 10px 10px 35px;
+    align-items:start;
+    align-content:center;
+}
+
+.Image{
+    grid-column: 1/2;
+}
+.Image img{
+    width:150px;
+    margin-bottom:10px;
+}
+
+.Loading{
+    margin-left:140px;
+}
+
+.PhotoBtns{
+    align-items: start;
+    display:grid;
+    justify-items: start;
+    grid-gap:3px;
+}
+
+.ProjectPhoto button{
+    width:auto;
+    background-color: slateblue;
+    border-radius: 3px;
+    padding: 5px 8px;
+    border: none;
+    white-space: nowrap;
+    -webkit-user-select: none;
+    cursor: pointer;
+    color:white;
+    font-size: 10pt;
+}
+
+.ChooseFile{
+    font-size: 20px;
+}
+
+.ChooseFile::-webkit-file-upload-button {
+    visibility: hidden;
+  }
+  .ChooseFile::before {
+    content: 'Choose Photo';
+    display: inline-block;
+    background: slateblue;
+    /* border: 1px solid #999; */
+    border-radius: 3px;
+    padding: 5px 8px;
+    outline: none;
+    white-space: nowrap;
+    -webkit-user-select: none;
+    cursor: pointer;
+    color:white;
+    font-size: 10pt;
+    margin-right:20px;
+  }
+
+  .ChooseFile::before:hover {
+    background-color: white;
+    color:slateblue;
+  }
+
+  .ChooseFile:focus{
+      outline:none;
+  }
+
+  input[type='file'] {
+    margin-right:20px;
+  }
+
+.AddNewProject{
+    border:none;
+    background-color: slateblue;
+    color:white;
+    font-size: 20px;
+    border-radius:30px;
+    padding:20px;
+    position:absolute;
+    bottom:10px;
+    right:10px;
+    cursor: pointer;
+    box-shadow: 1px 2px black;
+    margin: 4px 10px 4px 10px;
+}
+
+.AddNewProject:hover{
+    outline:none;
+    background-color: white;
+    color:slateblue;
+
+}
+
+.AddNewProject:focus{
+    outline:none;
+    box-shadow: 2px 4px black;
+    margin: 6px 10px 2px 10px;
+
+}

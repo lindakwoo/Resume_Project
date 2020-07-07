@@ -3,6 +3,7 @@ import classes from './Projects.module.css';
 import Radium from "radium";
 import {StyleRoot} from "radium";
 import styled from 'styled-components';
+import Project from './Project/Project';
 
 
 const projects =(props)=> {
@@ -18,13 +19,13 @@ const projects =(props)=> {
     if(props.currentPerson["username"]){
       if(props.currentPerson["projects"].length>0){
         projects = props.currentPerson["projects"].map(project=>{
-          return <div className = {classes.Project} key = {project['id']}>
-            <div className = {classes.ProjectHeader}>
-              <h2>{project["projectTitle"]}</h2>
-              <h3>{project["projectDescription"]}</h3>
-            </div>
-            <img  className = {classes.ProjectPhoto} src = {project["photo"]}/>
-          </div>
+          return (
+            <Project 
+              key =  {project['id']}
+              projectTitle = {project["projectTitle"]}
+              projectDescription = {project["projectDescription"]}
+              photo = {project["photo"]}/> 
+          )
         })
       }
     }
@@ -32,7 +33,6 @@ const projects =(props)=> {
 
     return (
         <div className={classes.ProjectsContainer}>
-        <h1>Projects</h1>
         <div className={classes.Projects}>
           {projects}
         </div>

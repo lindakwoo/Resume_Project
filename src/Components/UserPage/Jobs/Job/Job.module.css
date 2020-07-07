@@ -1,0 +1,7 @@
+.Job{
+    display:grid;
+    grid-template-rows: 50px 50px auto;
+    border-bottom: slategray solid 1px;
+    align-items:start;
+    width:700px;
+}

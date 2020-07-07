@@ -1,6 +1,4 @@
-.ProjectsContainer{
-    display:grid;
-}
+
 .Projects{
     display:grid;
     grid-template-rows: 350px;

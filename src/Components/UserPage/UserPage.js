@@ -3,8 +3,8 @@ import classes from './UserPage.module.css';
 import Radium from "radium";
 import {StyleRoot} from "radium";
 import styled from 'styled-components';
-import Jobs from "./Jobs"
-import Projects from "./Projects"
+import Jobs from "./Jobs/Jobs";
+import Projects from "./Projects/Projects"
 
 
 class UserPage extends Component {
@@ -47,11 +47,14 @@ class UserPage extends Component {
    
     let currentView = <div className = {classes.Summary}> {this.props.currentPerson["summary"]}</div>
     let message = <div>You must enter a valid current user. Go back to login page.</div> 
+    let viewName = <div>Summary: </div>
 
       if(this.state.view =="jobs"){
         currentView = <Jobs currentPerson={this.props.currentPerson}/>
+        viewName = <div>Jobs:</div>
       }else if (this.state.view == "projects"){
         currentView = <Projects currentPerson = {this.props.currentPerson}/>
+        viewName = <div>Projects:</div>
       }
 
       return (
@@ -59,6 +62,7 @@ class UserPage extends Component {
           <div className = {classes.Header}>
             <h1 className = {classes.Title}>{this.props.currentPerson["username"]||message }</h1>
             <h2 className = {classes.Description}>{this.props.currentPerson["description"]}</h2>
+            <h2 className = {classes.ViewName}>{viewName}</h2>
           </div>
           <img className = {classes.UserPhoto} src = {this.props.currentPerson["photo"]}/>
           <div className = {classes.Sidebar}>

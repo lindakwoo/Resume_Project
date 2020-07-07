@@ -35,17 +35,36 @@ class JobEdit extends Component {
       })
   }
 
+  deleteJob =(event)=>{
+    event.preventDefault();
+    let personId = this.state.currentPersonId;
+    let jobId = this.state.jobId;
+    const jobsRef = firebase.database().ref(`persons/${personId}/jobs`);
+    const jobRef = jobsRef.child(jobId)
+    jobRef.remove()
+    {this.props.deleteJobFromEdit(jobId)}
+  }
+
   render(){
 
     return (
-      <div className = {classes.jobEdit}>
+      <div className = {classes.JobEditContainer}>
+      <div className = {classes.JobEdit}>
+        <div className = {classes.JobEmployer}>
           <label>Employer:</label>
           <input type="text" onChange = {this.handleChange} value = {this.state.jobEmployer} name = "jobEmployer" placeholder = "Employer"/>
-          <label>job Name:</label>
+        </div>
+        <div className = {classes.JobTitle}>
+          <label>Job Title:</label>
           <input type="text" onChange = {this.handleChange} value = {this.state.jobTitle} name = "jobTitle" placeholder = "Job Title"/>
-          <label>job Description:</label>
-          <textarea cols = "45" rows="5" type = "textarea" onChange={this.handleChange} value = {this.state.jobDescription} name = "jobDescription" placeholder = "Job Description"/>
-          <button onClick = {this.handleNewChangesToJob} >submit changes to job</button>
+        </div>
+        <div className = {classes.JobDescription}>
+          <label>Job Description:</label>
+          <textarea cols = "55" rows="5" type = "textarea" onChange={this.handleChange} value = {this.state.jobDescription} name = "jobDescription" placeholder = "Job Description"/>   
+        </div>
+        <button className = {classes.Delete} onClick = {this.deleteJob}><span className ={classes.DeleteX}>X</span><span className = {classes.DeleteText}>Delete Job</span> </button>
+      </div>
+      <button className = {classes.ChangesToJob} onClick = {this.handleNewChangesToJob} >Submit Changes</button>
       </div>
         
     )

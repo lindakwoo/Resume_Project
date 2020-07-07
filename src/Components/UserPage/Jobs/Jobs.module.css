@@ -1,0 +1,7 @@
+
+.Jobs{
+    display:grid;
+    grid-template-rows: auto;
+    grid-auto-rows:auto;
+    margin-left:50px;
+}

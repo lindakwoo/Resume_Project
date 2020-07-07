@@ -2,6 +2,7 @@ import React, {Component} from 'react';
 import {storage} from '../../../../firebase';
 import firebase from '../../../../firebase';
 import classes from './NewProject.module.css';
+import Spinner from '../../../../UI/Spinner/Spinner';
 
 
 class NewProject extends Component {
@@ -10,7 +11,8 @@ class NewProject extends Component {
     projectTitle:"",
     projectDescription:"",
     selectedProjectPhotoFile:null,
-    projectPhotoURL:""
+    projectPhotoURL:"",
+    loading:false
   }
 
   handleChange = (event) => {
@@ -23,6 +25,7 @@ class NewProject extends Component {
 
   uploadProjectPhoto = ()=>{
     if(this.state.selectedProjectPhotoFile){
+      this.setState({loading:true})
       const uploadTask = storage.ref(`images/${this.state.selectedProjectPhotoFile.name}`).put(this.state.selectedProjectPhotoFile);
       uploadTask.on(
           "state_changed",
@@ -36,7 +39,8 @@ class NewProject extends Component {
               .child(this.state.selectedProjectPhotoFile.name)
               .getDownloadURL()
               .then(url=>{
-                  this.setState({projectPhotoURL:url})
+                  this.setState({projectPhotoURL:url});
+                  this.setState({loading:false});
               });
           }
       )
@@ -51,30 +55,47 @@ class NewProject extends Component {
       let projectTitle=this.state.projectTitle;
       let projectDescription = this.state.projectDescription;
       let projectPhotoURL = this.state.projectPhotoURL;
-      const projectsRef = firebase.database().ref(`persons/${personId}/projects`);
-      projectsRef.push({
+      let newProject = {
         "projectTitle":projectTitle,
         "projectDescription":projectDescription,
         "photo":projectPhotoURL
-      })
+      }
+      const projectsRef = firebase.database().ref(`persons/${personId}/projects`);
+      let newRef = projectsRef.push(newProject);
+      let projectId = newRef.key;
       this.setState({projectTitle:"", projectDescription:"", projectPhotoURL:""});
+      newProject["id"]=projectId;
+      this.props.addProjectToEdit(newProject);
   }
 
   render(){
-
+    let loading = <div className = {classes.Loading}></div>
+    if(this.state.loading){
+      loading = <div className = {classes.Loading}><Spinner/></div>
+    }
     return (
-      <div className = {classes.NewProject}>
-          <label>Project Name:</label>
-          <input type="text" onChange = {this.handleChange} value = {this.state.projectTitle} name = "projectTitle" placeholder = "Name of project"/>
-          <label>Project Description:</label>
-          <textarea cols = "45" rows="5"  type = "textarea" onChange={this.handleChange} value = {this.state.projectDescription} name = "projectDescription" placeholder = "Description of project"/>
-          <input type = "file" onChange = {this.projectFileSelectedHandler} placeholder = "select project photo"/>
-          <button onClick = {this.uploadProjectPhoto} >upload photo</button> 
-          <img src = {this.state.projectPhotoURL|| "http://via.placeholder.com/300"}/>
-          <button onClick = {this.handleAddNewProject} >submit new project</button>
+      <div className = {classes.NewProjectContainer}>
+        <div className = {classes.NewProject}>
+          <div className = {classes.ProjectInfo}>
+              <label>Project Name:</label>
+              <input type="text" onChange = {this.handleChange} value = {this.state.projectTitle} name = "projectTitle" placeholder = "Name of project"/>
+              <label>Project Description:</label>
+              <textarea cols = "35" rows="8"  type = "textarea" onChange={this.handleChange} value = {this.state.projectDescription} name = "projectDescription" placeholder = "Description of project"/>
+          </div>
+          <div className = {classes.ProjectPhoto}>
+              <div className = {classes.Image}>
+                <img src = {this.state.projectPhotoURL|| "http://via.placeholder.com/300"}/>
+                {loading}
+              </div>
+              <div className = {classes.PhotoBtns}>
+                <input className = {classes.ChooseFile} type = "file" onChange = {this.projectFileSelectedHandler} placeholder = "select project photo"/>
+                <button onClick = {this.uploadProjectPhoto} >upload photo</button> 
+              </div>
+          </div>
+        </div>
+        <button className = {classes.AddNewProject} onClick = {this.handleAddNewProject} >Submit New Project</button>
       </div>
-        
-    );
+    )
   } 
 }
 

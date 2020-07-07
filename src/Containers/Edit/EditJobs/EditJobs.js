@@ -17,6 +17,7 @@ const editJobs =(props)=>{
                         jobEmployer = {job["jobEmployer"]}
                         jobTitle = {job["jobTitle"]}
                         jobDescription = {job["jobDescription"]}
+                        deleteJobFromEdit={props.deleteJobFromEdit}
                         />
                     )
                 })
@@ -24,14 +25,13 @@ const editJobs =(props)=>{
         }    
 
     return (
-        <div className = {classes.Jobs}>
+        <div className = {classes.EditJobs}>
               <div className = {classes.CurrentJobs}>
-                <h1>Edit your jobs</h1>
                 <div>{jobs}</div>
               </div>
               <div className = {classes.NewJob}>
-                <h1>Add a new job</h1>
-                <NewJob currentPersonId={props.currentPersonId}/>
+                <h3>Add a new job</h3>
+                <NewJob currentPersonId={props.currentPersonId} addJobToEdit = {props.addJobToEdit}/>
               </div>
         </div>
 

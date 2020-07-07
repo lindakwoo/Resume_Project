@@ -8,6 +8,7 @@ import NewJob from './EditJobs/NewJob/NewJob';
 import JobEdit from './EditJobs/JobEdit/JobEdit';
 import EditJobs from './EditJobs/EditJobs'
 import EditProjects from './EditProjects/EditProjects'
+import Spinner from '../../UI/Spinner/Spinner'
 
 class Edit extends Component {
   constructor(props){
@@ -29,7 +30,8 @@ class Edit extends Component {
       selectedProjectPhotoFile:null,
       projectPhotoURL:"",
       added:0,
-      view:"main"
+      view:"main",
+      loading:false
     }
   }
   
@@ -48,6 +50,7 @@ class Edit extends Component {
   
   fileUploadHandler = ()=>{
     if(this.state.selectedUserPhotoFile){
+      this.setState({loading:true})
         const uploadTask = storage.ref(`images/${this.state.selectedUserPhotoFile.name}`).put(this.state.selectedUserPhotoFile);
         uploadTask.on(
             "state_changed",
@@ -61,7 +64,7 @@ class Edit extends Component {
                 .child(this.state.selectedUserPhotoFile.name)
                 .getDownloadURL()
                 .then(url=>{
-                    this.setState({userPhotoURL:url})
+                    this.setState({userPhotoURL:url, loading:false})
                 });
             }
         )
@@ -75,7 +78,7 @@ class Edit extends Component {
       let username = this.state.username;
       let description = this.state.description;
       let photo = this.state.userPhotoURL;
-      let summary = this.state.summary;
+      let summary = this.state.summary||" ";
       const personRef = firebase.database().ref(`persons/${id}`);
       personRef.update({
           "username":username,
@@ -83,12 +86,41 @@ class Edit extends Component {
           "photo":photo,
           "summary":summary
       })
+  }
 
+  addProjectToEdit=(newProject)=>{
+    let projects = this.state.projects;
+      projects.push(newProject);
+      this.setState({projects:projects})
   }
  
+  addJobToEdit=(newJob)=>{
+    let jobs = this.state.jobs;
+      jobs.push(newJob);
+      this.setState({jobs:jobs})
+  }
+
+  deleteProjectFromEdit = (id)=>{
+    let projects = this.state.projects;
+    let index = projects.findIndex(project=>{return project.id ===id})
+    projects.splice(index,1);
+    this.setState({projects:projects})
+  }
+
+  deleteJobFromEdit = (id)=>{
+    let jobs = this.state.jobs;
+    let index = jobs.findIndex(job=>{return job.id ===id})
+    jobs.splice(index,1);
+    this.setState({jobs:jobs})
+  }
+
   render(){      
+    let loading = <div className = {classes.Loading}></div>
+    if(this.state.loading){
+      loading = <div className = {classes.Loading}><Spinner/></div>
+    }
     let currentView = <div>placeholder</div>  
-    let title = <h1 className = {classes.Title}>Edit your main profile</h1>
+    let title = <h1 >Edit your main profile</h1>
    if(this.state.view=="main"){
     currentView =   <div className = {classes.UserContainer}>
                         <div className = {classes.User}>
@@ -100,7 +132,10 @@ class Edit extends Component {
                                 <input type = "text" onChange = {this.handleChange} name = "description" value = {this.state.description}/>
                             </div>
                             <div className = {classes.UserPhoto}>
-                                <img src = {this.state.userPhotoURL|| "http://via.placeholder.com/300"}/>
+                                <div className = {classes.Image}>
+                                  <img src = {this.state.userPhotoURL|| "http://via.placeholder.com/300"}/>
+                                  {loading}
+                                </div>
                                 <input className ={classes.ChooseFile} type = "file" title = " Choose Photo" onChange = {this.photoFileSelectedHandler} placeholder="Select New Photo"/>
                                 <button onClick = {this.fileUploadHandler}>Upload New Photo</button> 
                             </div>
@@ -117,15 +152,25 @@ class Edit extends Component {
       title = <h1 className = {classes.Title}>Edit your main profile</h1>
 
       }else if(this.state.view=="jobs"){
-      currentView = <EditJobs currentPerson = {this.props.currentPerson} jobs = {this.state.jobs} currentPersonId = {this.state.id}/>
-      title = <h1 className = {classes.Title}>Edit your jobs</h1>  
+      currentView = <EditJobs 
+                      currentPerson = {this.props.currentPerson} 
+                      jobs = {this.state.jobs} 
+                      addJobToEdit={this.addJobToEdit} 
+                      deleteJobFromEdit = {this.deleteJobFromEdit}
+                      currentPersonId = {this.state.id}/>
+      title = <h1>Edit your jobs</h1>  
     } else if(this.state.view= "projects"){
-      currentView = <EditProjects  currentPerson = {this.props.currentPerson} projects = {this.state.projects} currentPersonId = {this.state.id}/>
-      title = <h1 className = {classes.Title}>Edit your projects</h1>
+      currentView = <EditProjects  
+                      currentPerson = {this.props.currentPerson} 
+                      projects = {this.state.projects} 
+                      addProjectToEdit = {this.addProjectToEdit} 
+                      deleteProjectFromEdit = {this.deleteProjectFromEdit}
+                      currentPersonId = {this.state.id}/>
+      title = <h1>Edit your projects</h1>
     }               
     return (
       <div className={classes.Edit}>
-          {title}
+          <div className = {classes.Title}>  {title}</div>
           <div className = {classes.Sidebar}>
             <button onClick = {this.setView} name = "main">Main</button>
             <button onClick = {this.setView} name = "jobs">Jobs</button>

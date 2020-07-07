@@ -17,6 +17,7 @@ const editProjects =(props)=>{
                         projectTitle = {project["projectTitle"]}
                         projectDescription = {project["projectDescription"]}
                         photo = {project["photo"]||"http://via.placeholder.com/300"}
+                        deleteProjectFromEdit = {props.deleteProjectFromEdit}
                         />
                     )
                 })
@@ -24,15 +25,12 @@ const editProjects =(props)=>{
         }
 
     return (
-        <div className = {classes.Projects}>
-              <div className = {classes.CurrentProjects}>
-              <h1>Edit your projects</h1>
-              <div>{projects}</div>
-              </div>
-              <div className = {classes.NewProject}>
-              <h1>Add a new project</h1>
-                <NewProject currentPersonId={props.currentPersonId}/>
-              </div>
+        <div className = {classes.ProjectsContainer}>
+            <div className = {classes.CurrentProjects}>
+            {projects}
+            </div>         
+            <h3>Add a new project</h3>
+            <NewProject currentPersonId={props.currentPersonId} addProjectToEdit = {props.addProjectToEdit}/>
         </div>
 
     )

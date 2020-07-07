@@ -30,6 +30,7 @@ class ResumeBuilder extends Component {
 
   componentDidMount(){
     const personsRef = firebase.database().ref('persons');
+    console.log(personsRef);
     personsRef.on('value', (snapshot)=>{
       let persons = snapshot.val();
       let newState = [];

@@ -32,10 +32,8 @@ const projects =(props)=> {
 
 
     return (
-        <div className={classes.ProjectsContainer}>
         <div className={classes.Projects}>
           {projects}
-        </div>
         </div>
         
     );
