@@ -9,6 +9,7 @@ import JobEdit from './EditJobs/JobEdit/JobEdit';
 import EditJobs from './EditJobs/EditJobs'
 import EditProjects from './EditProjects/EditProjects'
 import Spinner from '../../UI/Spinner/Spinner'
+import ChooseWords from './EditMain/Words/ChooseWords/ChooseWords'
 
 class Edit extends Component {
   constructor(props){
@@ -46,7 +47,6 @@ class Edit extends Component {
   setView = (event)=>{
     this.setState({view:event.target.name})
   }
-
   
   fileUploadHandler = ()=>{
     if(this.state.selectedUserPhotoFile){
@@ -159,7 +159,7 @@ class Edit extends Component {
                       deleteJobFromEdit = {this.deleteJobFromEdit}
                       currentPersonId = {this.state.id}/>
       title = <h1>Edit your jobs</h1>  
-    } else if(this.state.view= "projects"){
+    } else if(this.state.view=="projects"){
       currentView = <EditProjects  
                       currentPerson = {this.props.currentPerson} 
                       projects = {this.state.projects} 
@@ -167,7 +167,12 @@ class Edit extends Component {
                       deleteProjectFromEdit = {this.deleteProjectFromEdit}
                       currentPersonId = {this.state.id}/>
       title = <h1>Edit your projects</h1>
-    }               
+    } else if(this.state.view == "words"){
+      currentView = <ChooseWords
+                      currentPerson = {this.props.currentPerson}
+                      currentPersonId = {this.state.id}/>
+      title = <h1>Choose five words to describe yourself</h1>
+    }              
     return (
       <div className={classes.Edit}>
           <div className = {classes.Title}>  {title}</div>
@@ -175,8 +180,10 @@ class Edit extends Component {
             <button onClick = {this.setView} name = "main">Main</button>
             <button onClick = {this.setView} name = "jobs">Jobs</button>
             <button onClick = {this.setView} name = "projects">Projects</button>
+            <button onClick = {this.setView} name = "words">Words</button>
           </div> 
-          <div className = {classes.Content}> {currentView} </div>  
+          <div className = {classes.Content}> {currentView} </div> 
+          
          
       </div>
     );

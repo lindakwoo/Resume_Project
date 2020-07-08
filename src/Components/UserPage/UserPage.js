@@ -9,7 +9,9 @@ import Projects from "./Projects/Projects"
 
 class UserPage extends Component {
   state = {
-    view:"main"
+    view:"main",
+    currentPerson:this.props.currentPerson,
+    words: this.props.currentPerson["words"]
   }
 
 
@@ -44,8 +46,16 @@ class UserPage extends Component {
     //   width:25%;
     // }
     // `
+
+    let wordsDisplay = this.state.words.map(word=>{
+      return <div className = {classes.Word}>{word['word']}</div>
+    })
    
-    let currentView = <div className = {classes.Summary}> {this.props.currentPerson["summary"]}</div>
+    let currentView = 
+      <div>
+        <div className = {classes.Summary}> {this.props.currentPerson["summary"]}</div>
+        <div className = {classes.WordsDisplay}>{wordsDisplay}</div>
+      </div>
     let message = <div>You must enter a valid current user. Go back to login page.</div> 
     let viewName = <div>Summary: </div>
 

@@ -53,6 +53,13 @@ class ResumeBuilder extends Component {
             jobDescription:persons[person]['jobs'][job].jobDescription
           })
         }
+        let words =[]
+        for(let word in persons[person]["words"]){
+          words.push({
+            id:word,
+            word:persons[person]['words'][word]
+          })
+        }
         newState.push({
           id:person,
           username:persons[person].username,
@@ -60,7 +67,8 @@ class ResumeBuilder extends Component {
           summary:persons[person].summary,
           photo:persons[person].photo,
           projects:projects,
-          jobs:jobs
+          jobs:jobs,
+          words:words
         });
       }
       this.setState({persons:newState, number:newState.length})

@@ -1,0 +1,71 @@
+.ChosenWords{
+    /* display:grid;
+    grid-template-rows: 25px;
+    grid-template-columns: repeat(5,1fr); */
+    background-color: rgb(235, 226, 240);
+    position:fixed;
+    left:215px;
+    top:135px;
+    z-index:50;
+}
+
+.ChosenWord{
+    margin: 0 10px 0 10px;
+    display:inline-block;
+    background-color: yellow;
+    padding:10px;
+}
+
+.ChosenWordBlank{
+    margin: 0 10px 0 10px;
+    display:inline-block;
+    background-color: yellow;
+    padding:10px;
+    color:yellow;
+}
+
+.ChosenWord:hover{
+    color:white;
+    background-color: red;
+}
+
+.WordsContainer{
+    position:relative;
+    top:100px;
+    display:grid;
+    grid-template-columns:1fr 1fr 1fr;
+    grid-template-rows: 250px 200px 500px;
+}
+
+.WordCategoryContainer{
+ display:grid;
+ grid-template-rows: 50px auto;
+ align-items: center;
+ justify-items:center;
+}
+
+.CategoryTitle{
+    margin:0 0 10px 0;
+    color:red;
+    height:35px;
+    align-self:end;
+}
+
+.Words{
+    display:grid;
+    grid-template-columns: 1fr 1fr;
+    justify-items: space-around;
+    align-items:start;
+    align-self:start;
+    grid-gap:10px;
+    grid-auto-rows: 10px;
+
+}
+
+.Word{
+ font-size:12px;
+}
+
+.Word:hover{
+    color:red;
+}
