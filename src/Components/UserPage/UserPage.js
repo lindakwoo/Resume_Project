@@ -4,7 +4,8 @@ import Radium from "radium";
 import {StyleRoot} from "radium";
 import styled from 'styled-components';
 import Jobs from "./Jobs/Jobs";
-import Projects from "./Projects/Projects"
+import Projects from "./Projects/Projects";
+import Main from "./Main/Main";
 
 
 class UserPage extends Component {
@@ -47,24 +48,21 @@ class UserPage extends Component {
     // }
     // `
 
-    let wordsDisplay = this.state.words.map(word=>{
-      return <div className = {classes.Word}>{word['word']}</div>
-    })
    
-    let currentView = 
-      <div>
-        <div className = {classes.Summary}> {this.props.currentPerson["summary"]}</div>
-        <div className = {classes.WordsDisplay}>{wordsDisplay}</div>
-      </div>
     let message = <div>You must enter a valid current user. Go back to login page.</div> 
-    let viewName = <div>Summary: </div>
+    let currentView = <div></div>
+    let viewName = <div></div>
+   
 
       if(this.state.view =="jobs"){
         currentView = <Jobs currentPerson={this.props.currentPerson}/>
         viewName = <div>Jobs:</div>
       }else if (this.state.view == "projects"){
-        currentView = <Projects currentPerson = {this.props.currentPerson}/>
+        currentView = <Projects currentPerson = {this.props.currentPerson} />
         viewName = <div>Projects:</div>
+      }else{
+        currentView = <Main currentPerson = {this.props.currentPerson} words = {this.state.words}/>
+        viewName = <div>Summary and Characteristics: </div>
       }
 
       return (

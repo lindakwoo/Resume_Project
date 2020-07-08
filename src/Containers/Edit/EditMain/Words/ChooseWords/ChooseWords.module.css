@@ -5,12 +5,14 @@
     background-color: rgb(235, 226, 240);
     position:fixed;
     left:215px;
-    top:135px;
+    top:80px;
+    height:100px;
+    width:100%;
     z-index:50;
 }
 
 .ChosenWord{
-    margin: 0 10px 0 10px;
+    margin: 50px 10px 0 10px;
     display:inline-block;
     background-color: yellow;
     padding:10px;

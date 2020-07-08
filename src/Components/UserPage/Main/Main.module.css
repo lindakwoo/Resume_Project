@@ -1,0 +1,75 @@
+.Main{
+    display:grid;
+    grid-template-rows: 280px;
+    grid-template-columns:1fr 1fr;
+}
+
+.Summary{
+    width:500px;
+    font-size: 25px;
+    margin-left:50px;
+}
+
+.WordsDisplay{
+   display:grid;
+   margin-left:50px;
+}
+.Word{
+    display:grid;
+    grid-template-columns: 1fr 4fr;
+    background-size:cover;
+    width:250px;
+    height:30px;
+    color:red;
+    font-size: 24px;
+    z-index:1000;
+    grid-gap:20px;
+    /* align-items: center; */
+}
+
+.Leafs{
+    background-image: url("leafs.png");
+    background-repeat: no-repeat;
+    background-size: cover;
+}
+
+/* .WordsDisplay div:nth-child(1){
+    background-image: url("leafs.png");
+    background-repeat: no-repeat;
+    background-size: 80%;
+    top:-150px;
+    left:10px;
+}
+
+.WordsDisplay div:nth-child(2){
+    background-image: url("roundtrees.png");
+    background-repeat: no-repeat;
+    background-size: 80%;
+    top:-175px;
+    left:225px;
+}
+
+.WordsDisplay div:nth-child(3){
+    background-image: url("boxytrees.png");
+    background-repeat: no-repeat;
+    background-size: 80%;
+    left:310px;
+    top:30px;
+}
+
+.WordsDisplay div:nth-child(4){
+    background-image: url("ovaltrees.png");
+    background-repeat: no-repeat;
+    background-size: 80%;
+    top:-10px;
+    left:130px;
+}
+
+.WordsDisplay div:nth-child(5){
+    background-image: url("trees.png");
+    background-repeat: no-repeat;
+    background-size: 80%;
+    top:140px;
+    left:50px;
+}
+ */
