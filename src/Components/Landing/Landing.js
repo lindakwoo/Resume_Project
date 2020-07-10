@@ -21,7 +21,7 @@ const landing =(props)=>{
               <button className = {classes.LoginSubmit} onClick = {props.logInHandler}><NavigationItem link = '/MyPage'> Submit</NavigationItem></button>
             </Modal>
             <Modal show = {props.addingNewUser} modalClosed = {props.closeAddingNewUser}>
-              <NewUser modalClosed = {props.closeAddingNewUser} persons = {props.persons}/>
+              <NewUser modalClosed = {props.closeAddingNewUser} persons = {props.persons} setUserName = {props.setUserName}/>
             </Modal>
            
             <img className = {classes.Leaf} src = {Leafs}/>

@@ -84,7 +84,7 @@ class NewUser extends Component {
         .catch(e=>{
           console.log("error saving data: ", e)
         })
-      
+      this.props.setUserName(this.state.username);
       this.props.modalClosed();  
     } else {
       alert("You must enter a username of at least 3 numbers or letters")

@@ -82,7 +82,10 @@ class ResumeBuilder extends Component {
       
     })
   }
-
+  setUserName =(name)=>{
+    this.setState({currentUsername:name});
+  }
+  
   setCurrentPerson=()=>{
     let persons = [...this.state.persons]
     let validUserName = false;
@@ -151,6 +154,7 @@ class ResumeBuilder extends Component {
           closeLogin = {this.closeLogin}
           logInHandler = {this.logInHandler}
           handleChange = {this.handleChange}
+          setUserName = {this.setUserName}
           {...props}
           />
 
