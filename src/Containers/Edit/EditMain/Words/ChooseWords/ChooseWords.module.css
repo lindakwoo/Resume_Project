@@ -29,6 +29,7 @@
 .ChosenWord:hover{
     color:white;
     background-color: red;
+    cursor: pointer;
 }
 
 .WordsContainer{
@@ -70,4 +71,5 @@
 
 .Word:hover{
     color:red;
+    cursor: pointer;
 }

@@ -50,7 +50,9 @@ class ResumeBuilder extends Component {
             id:job,
             jobEmployer:persons[person]['jobs'][job].jobEmployer,
             jobTitle:persons[person]['jobs'][job].jobTitle,
-            jobDescription:persons[person]['jobs'][job].jobDescription
+            jobDescription:persons[person]['jobs'][job].jobDescription,
+            jobDescription2:persons[person]['jobs'][job].jobDescription2,
+            jobDescription3:persons[person]['jobs'][job].jobDescription3
           })
         }
         let words =[]

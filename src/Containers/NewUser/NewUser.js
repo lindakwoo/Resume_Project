@@ -56,26 +56,39 @@ class NewUser extends Component {
 
   handleAddNewPerson = event=>{
     event.preventDefault();
-    const personsRef = firebase.database().ref('persons');
-    const person = {
-      username: this.state.username,
-      description: this.state.description,
-      photo: this.state.userPhotoURL,
+    let name = this.state.username;
+    let char = /\w/
+    let count = 0;
+    for(let i = 0;i<name.length;i++){
+      if(char.test(name[i])){
+        count++;
+      }
     }
-    personsRef.push(person)
-      .then(()=>{
-        let personsArray = [...this.state.persons]
-        let currentUsername = this.state.username;
-        for(let personX of personsArray){
-          if(personX.username===this.state.username){
-            this.setState({id:personX.id})
+    if(count>2){
+      const personsRef = firebase.database().ref('persons');
+      const person = {
+        username: this.state.username,
+        description: this.state.description,
+        photo: this.state.userPhotoURL,
+      }
+      personsRef.push(person)
+        .then(()=>{
+          let personsArray = [...this.state.persons]
+          let currentUsername = this.state.username;
+          for(let personX of personsArray){
+            if(personX.username===this.state.username){
+              this.setState({id:personX.id})
+            }
           }
-        }
-      })
-      .catch(e=>{
-        console.log("error saving data: ", e)
-      })
-    this.props.modalClosed();  
+        })
+        .catch(e=>{
+          console.log("error saving data: ", e)
+        })
+      
+      this.props.modalClosed();  
+    } else {
+      alert("You must enter a username of at least 3 numbers or letters")
+    } 
   }
   
   fileUploadHandler = ()=>{

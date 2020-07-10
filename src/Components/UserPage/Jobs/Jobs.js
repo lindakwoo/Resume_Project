@@ -18,6 +18,8 @@ const jobs =(props)=> {
         jobTitle = {job["jobTitle"]}
         jobEmployer = {job["jobEmployer"]}
         jobDescription = {job["jobDescription"]}
+        jobDescription2 = {job["jobDescription2"]}
+        jobDescription3 = {job["jobDescription3"]}
         />
         }) 
     }       

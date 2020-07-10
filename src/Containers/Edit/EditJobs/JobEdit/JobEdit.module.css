@@ -1,11 +1,11 @@
 .JobEditContainer{
     position:relative;
-    height:350px;
+    height:400px;
     border-bottom: slategray solid 1px;
 }
 .JobEdit{
     display:grid;
-    grid-template-rows: 100px 250px;
+    grid-template-rows: 100px 300px;
     grid-template-columns: 5fr 4fr 1fr;
 }
 
@@ -53,6 +53,12 @@ input:focus{
 
 textarea{
     height:150px;
+}
+
+.JobDescription textarea{
+    height:50px;
+    font-size:14px;
+    width:700px;
 }
 
 textarea:focus{

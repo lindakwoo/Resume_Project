@@ -80,7 +80,7 @@
     visibility: hidden;
   }
   .ChooseFile::before {
-    content: 'Choose Photo';
+    content: 'Change Photo';
     display: inline-block;
     background: slateblue;
     /* border: 1px solid #999; */

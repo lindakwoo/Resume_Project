@@ -2,6 +2,7 @@
     display:grid;
     grid-template-rows: 280px;
     grid-template-columns:1fr 1fr;
+    position:relative;
 }
 
 .Summary{
@@ -12,8 +13,12 @@
 
 .WordsDisplay{
    display:grid;
-   margin-left:50px;
+   grid-template-rows: repeat(5, 60px);
+   position:absolute;
+   top:-40px;
+   left:60%;
 }
+
 .Word{
     display:grid;
     grid-template-columns: 1fr 4fr;
@@ -28,7 +33,7 @@
 }
 
 .Leafs{
-    background-image: url("leafs.png");
+    background-image: url("../../../images/leafs.png");
     background-repeat: no-repeat;
     background-size: cover;
 }

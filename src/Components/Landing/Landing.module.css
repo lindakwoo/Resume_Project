@@ -8,7 +8,23 @@
     text-align: center;
     animation:changeTitleColor 1.5s 3s ease-out forwards, moveTitle 3s ;
   }
-  
+
+ .Leaf{
+    position:absolute;
+    width:150px;
+    top:25%;
+    left:17%;
+    opacity:1;
+    animation:showLeaf 6s ease-out forwards;
+  }
+
+  @keyframes showLeaf{
+    0%{opacity:0;}
+    50%{opacity:0;}
+    75%{opacity:0;}
+    100%{opacity:1;}
+    }
+
   @keyframes moveTitle{
     0%{top:100%;}
     100%{top:5%;}
@@ -57,16 +73,16 @@
   }
   .SignInUpBtns{
     position:absolute;
-    top:100%;
+    top:65%;
     left:50%;
     transform:translateX(-50%);
-    animation:appear .5s 4s ease-out forwards;
+    opacity:1.0;
+    animation:showLeaf 6s ease-out forwards;
     display:flex;
     flex-direction: column;
     justify-content: flex-end;
     width:50%;
     align-items: center;
-    
   }
 
   @keyframes appear{
@@ -135,21 +151,22 @@
   
 
   .LogIn{
-    display:flex;
-    flex-direction: column;
+    display:grid;
     align-items:center;
-    justify-content:space-evenly;
+    justify-content:center;
     width:100%;
   }
 
   .LogIn p{
     font-size:30px;
     color:orangered;
+    justify-self: center;
   }
 
   .LogIn input{
     font-size:30px;
     text-align: center;
+    border:solid lightgray;
   }
 
   .LoginSubmit{

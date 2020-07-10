@@ -11,6 +11,8 @@ class JobEdit extends Component {
     jobEmployer:this.props.jobEmployer,
     jobTitle:this.props.jobTitle,
     jobDescription:this.props.jobDescription,
+    jobDescription2:this.props.jobDescription2,
+    jobDescription3:this.props.jobDescription3,
   }
 
   handleChange = (event) => {
@@ -26,12 +28,16 @@ class JobEdit extends Component {
       let jobEmployer=this.state.jobEmployer;
       let jobTitle=this.state.jobTitle;
       let jobDescription=this.state.jobDescription;
+      let jobDescription2=this.state.jobDescription2;
+      let jobDescription3=this.state.jobDescription3;
       const jobsRef = firebase.database().ref(`persons/${personId}/jobs`);
       const jobRef = jobsRef.child(jobId)
       jobRef.update({
         "jobEmployer":jobEmployer,
         "jobTitle":jobTitle,
-        "jobDescription":jobDescription
+        "jobDescription":jobDescription,
+        "jobDescription2":jobDescription2,
+        "jobDescription3":jobDescription3
       })
   }
 
@@ -59,8 +65,10 @@ class JobEdit extends Component {
           <input type="text" onChange = {this.handleChange} value = {this.state.jobTitle} name = "jobTitle" placeholder = "Job Title"/>
         </div>
         <div className = {classes.JobDescription}>
-          <label>Job Description:</label>
-          <textarea cols = "55" rows="5" type = "textarea" onChange={this.handleChange} value = {this.state.jobDescription} name = "jobDescription" placeholder = "Job Description"/>   
+          <label>Job Accomplishments:</label>
+          <textarea cols = "55" rows="2" type = "textarea" onChange={this.handleChange} value = {this.state.jobDescription} name = "jobDescription" placeholder = "Accomplishment"/>  
+          <textarea cols = "55" rows="2" type = "textarea" onChange={this.handleChange} value = {this.state.jobDescription2} name = "jobDescription2" placeholder = "Accomplishment"/>  
+          <textarea cols = "55" rows="2" type = "textarea" onChange={this.handleChange} value = {this.state.jobDescription3} name = "jobDescription3" placeholder = "Accomplishment"/>   
         </div>
         <button className = {classes.Delete} onClick = {this.deleteJob}><span className ={classes.DeleteX}>X</span><span className = {classes.DeleteText}>Delete Job</span> </button>
       </div>

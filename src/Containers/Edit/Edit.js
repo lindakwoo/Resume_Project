@@ -136,7 +136,7 @@ class Edit extends Component {
                                   <img src = {this.state.userPhotoURL|| "http://via.placeholder.com/300"}/>
                                   {loading}
                                 </div>
-                                <input className ={classes.ChooseFile} type = "file" title = " Choose Photo" onChange = {this.photoFileSelectedHandler} placeholder="Select New Photo"/>
+                                <input className ={classes.ChooseFile} type = "file" onChange = {this.photoFileSelectedHandler} placeholder="Select New Photo"/>
                                 <button onClick = {this.fileUploadHandler}>Upload New Photo</button> 
                             </div>
                           </div>
@@ -177,10 +177,10 @@ class Edit extends Component {
       <div className={classes.Edit}>
           <div className = {classes.Title}>  {title}</div>
           <div className = {classes.Sidebar}>
-            <button onClick = {this.setView} name = "main">Main</button>
+            <button onClick = {this.setView} name = "main">Summary</button>
             <button onClick = {this.setView} name = "jobs">Jobs</button>
             <button onClick = {this.setView} name = "projects">Projects</button>
-            <button onClick = {this.setView} name = "words">Words</button>
+            <button onClick = {this.setView} name = "words">Character</button>
           </div> 
           <div className = {classes.Content}> {currentView} </div> 
           

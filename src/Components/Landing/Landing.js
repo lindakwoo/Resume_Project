@@ -6,6 +6,7 @@ import { useHistory } from "react-router-dom";
 import history from '../../History'
 import NavigationItem from '../Navigation/NavigationItem/NavigationItem'
 import NewUser from '../../Containers/NewUser/NewUser'
+import Leafs from "./leafs.png"
 
 
 const landing =(props)=>{
@@ -22,7 +23,8 @@ const landing =(props)=>{
             <Modal show = {props.addingNewUser} modalClosed = {props.closeAddingNewUser}>
               <NewUser modalClosed = {props.closeAddingNewUser} persons = {props.persons}/>
             </Modal>
-            
+           
+            <img className = {classes.Leaf} src = {Leafs}/>
             <h2 className = {classes.Title}>Rezoom</h2>
             <div className = {classes.Home}>
             </div>

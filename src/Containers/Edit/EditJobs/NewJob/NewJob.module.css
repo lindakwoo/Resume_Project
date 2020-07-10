@@ -1,11 +1,11 @@
 .NewJobContainer{
     position:relative;
-    height:350px;
+    height:400px;
     border-bottom: slategray solid 1px;
 }
 .NewJob{
     display:grid;
-    grid-template-rows: 100px 250px;
+    grid-template-rows: 100px 300px;
     grid-template-columns: 50% 50%;
 }
 
@@ -48,8 +48,10 @@ label{
    
 }
 
-textarea{
-    height:150px;
+.JobDescription textarea{
+    height:50px;
+    width:700px;
+    font-size: 14px;
 }
 
 .AddNewJob{

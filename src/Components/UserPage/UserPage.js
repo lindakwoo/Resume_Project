@@ -56,10 +56,10 @@ class UserPage extends Component {
 
       if(this.state.view =="jobs"){
         currentView = <Jobs currentPerson={this.props.currentPerson}/>
-        viewName = <div>Jobs:</div>
+        viewName = <div>Work Experiences:</div>
       }else if (this.state.view == "projects"){
         currentView = <Projects currentPerson = {this.props.currentPerson} />
-        viewName = <div>Projects:</div>
+        viewName = <div>Personal Projects:</div>
       }else{
         currentView = <Main currentPerson = {this.props.currentPerson} words = {this.state.words}/>
         viewName = <div>Summary and Characteristics: </div>
@@ -74,7 +74,7 @@ class UserPage extends Component {
           </div>
           <img className = {classes.UserPhoto} src = {this.props.currentPerson["photo"]}/>
           <div className = {classes.Sidebar}>
-            <button onClick = {this.setView} name = "main">Main</button>
+            <button onClick = {this.setView} name = "main">Summary</button>
             <button onClick = {this.setView} name = "jobs">Jobs</button>
             <button onClick = {this.setView} name = "projects">Projects</button>
           </div>  
