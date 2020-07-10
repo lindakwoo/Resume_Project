@@ -26,6 +26,11 @@
 
 }
 
+.Message{
+    position: absolute;
+    top:200px;
+}
+
 .Sidebar {
     grid-row: 2/3;
     grid-column: 1/2;

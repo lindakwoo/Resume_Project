@@ -49,7 +49,7 @@ class UserPage extends Component {
     // `
 
    
-    let message = <div>You must enter a valid current user. Go back to login page.</div> 
+    let message = <div className = {classes.Message}>You must enter a valid current user. Go Home to log in.</div> 
     let currentView = <div></div>
     let viewName = <div></div>
    

@@ -19,7 +19,7 @@ class ResumeBuilder extends Component {
     this.state = {
       view:"home",
       persons:[],
-      currentUsername:"Linda Woo",
+      currentUsername:"",
       currentUserId:"",
       currentPerson:{},
       loggingIn:false,

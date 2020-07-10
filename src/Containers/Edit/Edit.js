@@ -172,7 +172,11 @@ class Edit extends Component {
                       currentPerson = {this.props.currentPerson}
                       currentPersonId = {this.state.id}/>
       title = <h1>Choose five words to describe yourself</h1>
-    }              
+    }        
+    if(!this.props.currentPerson["username"]){
+      console.log("no person chosen")
+      currentView = <div className = {classes.Message}>You must enter a valid current user. Go Home to log in.</div> 
+    }      
     return (
       <div className={classes.Edit}>
           <div className = {classes.Title}>  {title}</div>
