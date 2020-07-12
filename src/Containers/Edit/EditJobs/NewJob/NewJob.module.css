@@ -56,7 +56,7 @@ label{
 
 .AddNewJob{
     border:none;
-    background-color: slateblue;
+    background-color: orangered;
     color:white;
     font-size: 20px;
     border-radius:30px;
@@ -71,8 +71,8 @@ label{
 
 .AddNewJob:hover{
     outline:none;
-    background-color: white;
-    color:slateblue;
+    background-color: #91f5f8;
+    color:orangered;
 
 }
 

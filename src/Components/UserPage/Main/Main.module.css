@@ -9,6 +9,7 @@
     width:500px;
     font-size: 25px;
     margin-left:50px;
+    font-family: 'Quicksand', sans-serif;
 }
 
 .WordsDisplay{
@@ -25,10 +26,12 @@
     background-size:cover;
     width:250px;
     height:30px;
-    color:red;
+    color:orangered;
     font-size: 24px;
     z-index:1000;
     grid-gap:20px;
+    font-family: 'Quicksand', sans-serif;
+    font-weight: bold;
     /* align-items: center; */
 }
 

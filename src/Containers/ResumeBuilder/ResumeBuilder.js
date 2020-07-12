@@ -20,7 +20,7 @@ class ResumeBuilder extends Component {
     this.state = {
       view:"home",
       persons:[],
-      currentUsername:"",
+      currentUsername:"Linda Woo",
       currentUserId:"",
       currentPerson:{},
       loggingIn:false,
@@ -199,7 +199,7 @@ class ResumeBuilder extends Component {
               <Route path = '/' exact render = {myLanding}/>
               <Route path = '/MyPage' exact render = {myUserPage}/>
               <Route path = '/EditMyPage' exact render = {myForm}/>
-              <Route path = '/user/:name' render = {resume} />
+              <Route path = '/:name' render = {resume} />
           </Switch>
       </div>
     )

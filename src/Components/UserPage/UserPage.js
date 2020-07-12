@@ -56,13 +56,13 @@ class UserPage extends Component {
 
       if(this.state.view =="jobs"){
         currentView = <Jobs currentPerson={this.props.currentPerson}/>
-        viewName = <div>Work Experiences:</div>
+        viewName = <div className = {classes.ViewTitle}>Jobs:</div>
       }else if (this.state.view == "projects"){
         currentView = <Projects currentPerson = {this.props.currentPerson} />
-        viewName = <div>Personal Projects:</div>
+        viewName = <div className = {classes.ViewTitle}>Projects:</div>
       }else{
         currentView = <Main currentPerson = {this.props.currentPerson} />
-        viewName = <div>Summary and Characteristics: </div>
+        viewName = <div className = {classes.ViewTitle}>Summary and Characteristics: </div>
       }
 
       return (
@@ -70,9 +70,11 @@ class UserPage extends Component {
           <div className = {classes.Header}>
             <h1 className = {classes.Title}>{this.props.currentPerson["username"]||message }</h1>
             <h2 className = {classes.Description}>{this.props.currentPerson["description"]}</h2>
-            <h2 className = {classes.ViewName}>{viewName}</h2>
+            <div className = {classes.ViewName}>{viewName}</div>
           </div>
-          <img className = {classes.UserPhoto} src = {this.props.currentPerson["photo"]}/>
+          <div className = {classes.ImageCropper}>
+            <img className = {classes.UserPhoto} src = {this.props.currentPerson["photo"]}/>
+          </div>
           <div className = {classes.Sidebar}>
             <button onClick = {this.setView} name = "main">Summary</button>
             <button onClick = {this.setView} name = "jobs">Jobs</button>

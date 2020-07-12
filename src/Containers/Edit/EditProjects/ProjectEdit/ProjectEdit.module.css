@@ -61,7 +61,7 @@
 
 .ProjectPhoto button{
     width:auto;
-    background-color: slateblue;
+    background-color: orangered;
     border-radius: 3px;
     padding: 5px 8px;
     border: none;
@@ -72,8 +72,14 @@
     font-size: 10pt;
 }
 
+.ProjectPhoto button:hover{
+    background-color: #91f5f8;
+    color:orangered;
+}
+
 .ChooseFile{
     font-size: 20px;
+    background-color: white;
 }
 
 .ChooseFile::-webkit-file-upload-button {
@@ -82,7 +88,7 @@
   .ChooseFile::before {
     content: 'Change Photo';
     display: inline-block;
-    background: slateblue;
+    background: orangered;
     /* border: 1px solid #999; */
     border-radius: 3px;
     padding: 5px 8px;
@@ -104,6 +110,12 @@
       outline:none;
   }
 
+  .ChooseFile:hover:before{
+    background-color: #91f5f8;
+    color:orangered;
+  }
+
+
   input[type='file'] {
     margin-right:20px;
   }
@@ -112,7 +124,7 @@
       align-self:start;
       justify-self:start;
       margin:30px;
-      background-color: rgb(235, 226, 240);
+      background-color: white;
       color:red;
       font-size: 16px;
       border:none;
@@ -150,12 +162,12 @@
   .DeleteX{
       font-size:50px;
       line-height:100%;
-      color:slateblue;
+      color:orangered;
   }
 
 .ChangesToProject{
     border:none;
-    background-color: slateblue;
+    background-color: orangered;
     color:white;
     font-size: 20px;
     border-radius:30px;
@@ -170,8 +182,8 @@
 
 .ChangesToProject:hover{
     outline:none;
-    background-color: white;
-    color:slateblue;
+    background-color: #91f5f8;
+    color:orangered;
 
 }
 

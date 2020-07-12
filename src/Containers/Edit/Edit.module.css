@@ -2,7 +2,7 @@
     display:grid;
     height:auto;
     min-height:100vh;
-    background-color: rgb(235, 226, 240);
+    background-color: white;
     font-size:24px;
     grid-template-rows:100px auto;
     grid-template-columns:  200px auto;
@@ -16,14 +16,15 @@
     position:fixed;
     width:100%;
     height:100px;
-    background-color: rgb(235, 226, 240);
+    background-color: white;
     z-index:2;
     margin-top:0;
 }
 
-.Title h1{
+.EditTitle {
     margin-top: 20px;
-
+    font-family: 'Quicksand', sans-serif;
+    font-size:28px;
 }
 
 .Message{
@@ -47,17 +48,18 @@
 
 .Sidebar button{
     border:none;
-    background-color: slateblue;
+    background-color: orangered;
     color:white;
     font-size: 20px;
     border-radius:30px;
     padding:20px;
+    font-weight: bold;
 }
 
 
 .Sidebar button:hover{
-    background-color: white;
-    color:slateblue;
+    background-color: #91f5f8;
+    color:orangered;
     cursor: pointer;
 }
 
@@ -111,7 +113,7 @@
 
 .UserPhoto button{
     width:auto;
-    background-color: slateblue;
+    background-color: orangered;
     border-radius: 3px;
     padding: 5px 8px;
     border: none;
@@ -123,6 +125,11 @@
     grid-row:2/3;
     grid-column:2/3;
     margin-top:10px;
+}
+
+.UserPhoto button:hover{
+    background-color: #91f5f8;
+    color:orangered;
 }
 
 
@@ -146,13 +153,21 @@
     justify-content:flex-start;
 }
 
+input{
+    background-color: lightgray;
+    border-radius: 5px;
+}
+
 textarea{
     font-size:20px;
     border:none;
     color:orangered;
+    background-color: lightgray;
+    border-radius: 5px;
 }
 .ChooseFile{
     font-size: 20px;
+    background-color: white;
 }
 
 .ChooseFile::-webkit-file-upload-button {
@@ -161,7 +176,7 @@ textarea{
   .ChooseFile::before {
     content: 'Change Photo';
     display: inline-block;
-    background: slateblue;
+    background: orangered;
     /* border: 1px solid #999; */
     border-radius: 3px;
     padding: 5px 8px;
@@ -174,10 +189,7 @@ textarea{
     margin-right:20px;
   }
 
-  .ChooseFile::before:hover {
-    background-color: white;
-    color:slateblue;
-  }
+
 
   .ChooseFile{
       margin-top:90px;
@@ -186,6 +198,12 @@ textarea{
   .ChooseFile:focus{
       outline:none;
   }
+
+  .ChooseFile:hover:before{
+    background-color: #91f5f8;
+    color:orangered;
+  }
+
 
   input[type='file'] {
     margin-right:20px;
@@ -204,7 +222,7 @@ textarea{
 
 .ChangesToPerson button{
     border:none;
-    background-color: slateblue;
+    background-color: orangered;
     color:white;
     font-size: 20px;
     border-radius:30px;
@@ -219,8 +237,8 @@ textarea{
 
 .ChangesToPerson button:hover{
     outline:none;
-    background-color: white;
-    color:slateblue;
+    background-color: #91f5f8;
+    color:orangered;
 
 }
 

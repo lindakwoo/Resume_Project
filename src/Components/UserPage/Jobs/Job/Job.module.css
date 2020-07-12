@@ -4,4 +4,18 @@
     border-bottom: slategray solid 1px;
     align-items:start;
     width:700px;
+    font-family: 'Quicksand', sans-serif;
+}
+
+.Job h2 {
+    font-family: 'Quicksand', sans-serif;
+    font-size: 28px;
+}
+
+.Job h3 {
+    font-family: 'Quicksand', sans-serif;
+}
+
+.Job ul li {
+    font-family: 'Quicksand', sans-serif;
 }

@@ -64,7 +64,7 @@ class ChooseWords extends Component{
         }
         let workingChosenWords = []
         workingChosenWords = this.state.workingChosenWords.map(word=>{
-            return <div className = {classes.ChosenWord} onClick = {this.deleteWord}>{word}</div>
+            return <div className = {classes.ChosenWordContainer}><div className = {classes.ChosenWord} onClick = {this.deleteWord}>{word}</div><span> delete x</span></div>
         })
         if(workingChosenWords.length<5){
             for(let i = workingChosenWords.length;i<5;i++){

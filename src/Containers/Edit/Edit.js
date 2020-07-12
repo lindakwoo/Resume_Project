@@ -149,7 +149,7 @@ class Edit extends Component {
                           <button  onClick = {this.handleNewChangesToPerson}>Save New Changes</button>
                         </div>
                       </div>;
-      title = <h1 className = {classes.Title}>Edit your main profile</h1>
+      title = <h1 className = {classes.EditTitle}>Edit your main profile</h1>
 
       }else if(this.state.view=="jobs"){
       currentView = <EditJobs 
@@ -158,7 +158,7 @@ class Edit extends Component {
                       addJobToEdit={this.addJobToEdit} 
                       deleteJobFromEdit = {this.deleteJobFromEdit}
                       currentPersonId = {this.state.id}/>
-      title = <h1>Edit your jobs</h1>  
+      title = <h1 className = {classes.EditTitle}>Edit your jobs</h1>  
     } else if(this.state.view=="projects"){
       currentView = <EditProjects  
                       currentPerson = {this.props.currentPerson} 
@@ -166,12 +166,12 @@ class Edit extends Component {
                       addProjectToEdit = {this.addProjectToEdit} 
                       deleteProjectFromEdit = {this.deleteProjectFromEdit}
                       currentPersonId = {this.state.id}/>
-      title = <h1>Edit your projects</h1>
+      title = <h1 className = {classes.EditTitle}>Edit your projects</h1>
     } else if(this.state.view == "words"){
       currentView = <ChooseWords
                       currentPerson = {this.props.currentPerson}
                       currentPersonId = {this.state.id}/>
-      title = <h1>Choose five words to describe yourself</h1>
+      title = <h1 className = {classes.EditTitle}>Choose five words to describe yourself</h1>
     }        
     if(!this.props.currentPerson["username"]){
       console.log("no person chosen")

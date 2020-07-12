@@ -4,6 +4,7 @@
     grid-template-columns: 50% 50%;
     border-bottom: slategray solid 1px;
     align-items:start;
+    font-family: 'Quicksand', sans-serif;
 }
 
 .ProjectInfo{
@@ -12,10 +13,19 @@
     margin-left: 50px;
     grid-template-rows:50px 200px;
     align-items: space-between;
+    font-family: 'Quicksand', sans-serif;
 }
 
 .ProjectInfo h2{
     align-self:start;
+    font-family: 'Quicksand', sans-serif;
+    font-weight: bold;
+    font-size: 28px;
+}
+
+.ProjectInfo h3{
+    align-self:start;
+    font-family: 'Quicksand', sans-serif;
 }
 
 .ProjectPhoto{
