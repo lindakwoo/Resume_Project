@@ -131,11 +131,14 @@ class ResumeBuilder extends Component {
 
     const myUserPage = (props)=>{
       return (
-        <UserPage 
-          currentPerson = {this.state.currentPerson} 
-          view = "main"
-          {...props}
-          />
+        <div>
+          <NavigationItems/>
+          <UserPage 
+            currentPerson = {this.state.currentPerson} 
+            view = "main"
+            {...props}
+            />
+        </div>
       )
     }
 
@@ -163,25 +166,29 @@ class ResumeBuilder extends Component {
 
     const myForm = (props)=>{
       return(
-        <Edit
-          currentPerson = {this.state.currentPerson}
-          persons = {this.state.persons} 
-          {...props}
-          />
+        <div>
+          <NavigationItems/>
+          <Edit
+            currentPerson = {this.state.currentPerson}
+            persons = {this.state.persons} 
+            {...props}
+            />
+        </div>
 
       )
     }
-      return(
-    
-        <div className = {classes.ResumeBuilder}>
-            <NavigationItems/>
-            <Switch>
-                <Route path = '/' exact render = {myLanding}/>
-                <Route path = '/MyPage' exact render = {myUserPage}/>
-                <Route path = '/EditMyPage' exact render = {myForm}/>
-            </Switch>
-        </div>
-      )
+
+    return(
+  
+      <div className = {classes.ResumeBuilder}>
+          
+          <Switch>
+              <Route path = '/' exact render = {myLanding}/>
+              <Route path = '/MyPage' exact render = {myUserPage}/>
+              <Route path = '/EditMyPage' exact render = {myForm}/>
+          </Switch>
+      </div>
+    )
   };
 }
 
