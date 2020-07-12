@@ -3,8 +3,8 @@ import classes from './Main.module.css'
 
 const main = (props)=>{
     let wordsDisplay = <div></div>
-    if(props.words){
-        wordsDisplay = props.words.map(word=>{
+    if(props.currentPerson.words){
+        wordsDisplay = props.currentPerson.words.map(word=>{
             return <div className = {classes.Word}><div className = {classes.Leafs}></div>{word['word']} </div>
         })
     }

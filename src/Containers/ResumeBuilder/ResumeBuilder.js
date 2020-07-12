@@ -11,6 +11,7 @@ import Aux from '../../hoc/Aux'
 import NavigationItems from '../../Components/Navigation/NavigationItems'
 import Landing from '../../Components/Landing/Landing'
 import history from '../../History'
+import Resume from '../Resume/Resume'
 
 
 class ResumeBuilder extends Component {
@@ -82,6 +83,9 @@ class ResumeBuilder extends Component {
       
     })
   }
+
+
+
   setUserName =(name)=>{
     this.setState({currentUsername:name});
   }
@@ -178,6 +182,15 @@ class ResumeBuilder extends Component {
       )
     }
 
+    let resume = (props)=>{
+      return (
+          <Resume
+            persons = {this.state.persons} 
+            {...props}
+            />
+      )
+    }
+
     return(
   
       <div className = {classes.ResumeBuilder}>
@@ -186,6 +199,7 @@ class ResumeBuilder extends Component {
               <Route path = '/' exact render = {myLanding}/>
               <Route path = '/MyPage' exact render = {myUserPage}/>
               <Route path = '/EditMyPage' exact render = {myForm}/>
+              <Route path = '/user/:name' render = {resume} />
           </Switch>
       </div>
     )

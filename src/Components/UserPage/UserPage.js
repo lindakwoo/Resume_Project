@@ -61,7 +61,7 @@ class UserPage extends Component {
         currentView = <Projects currentPerson = {this.props.currentPerson} />
         viewName = <div>Personal Projects:</div>
       }else{
-        currentView = <Main currentPerson = {this.props.currentPerson} words = {this.state.words}/>
+        currentView = <Main currentPerson = {this.props.currentPerson} />
         viewName = <div>Summary and Characteristics: </div>
       }
 

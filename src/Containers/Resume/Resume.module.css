@@ -1,0 +1,100 @@
+.UserPage {
+    background-color: rgb(250, 247, 220);
+    top:0;
+    left:0;
+    width:100%;
+    min-height: 100vh;
+    border: 1px solid black;
+    display:grid;
+    grid-template:250px auto /200px auto;
+    grid-gap:10px;
+    /* grid-template-areas:
+    "I H H H H H H H"
+    "S S C C C C C C"; */
+    grid-auto-rows: 200px;
+    
+}
+
+.Message{
+    position:absolute;
+    font-size: 24px;
+    height:100vh;
+    width:7000px;
+    background-color:rgb(250, 247, 220) ;
+    z-index:1000;
+    left:0;
+}
+
+.UserPhoto {
+    grid-area:1/1 /2/2;
+    max-height: 220px;
+    width:150px;
+    position: fixed;
+    top:25px;
+    left:25px
+  
+}
+
+.Header {
+    grid-row: 1/2;
+    grid-column: 2 /span 7;
+    position:fixed;
+    left:200px;
+    width:100%;
+    background-color: rgb(250, 247, 220);
+    z-index:2
+}
+
+.Title {
+    font-size: 50px;
+    margin-bottom:0;
+}
+.Description{
+    margin-top:0;
+}
+
+.ViewName{
+    margin-top:70px;
+}
+
+.Sidebar {
+    grid-row: 2/3;
+    grid-column: 1/2;
+    display:grid;
+    grid: 75px 75px 75px /150px;
+    margin-left:20px;
+    align-items: start;
+    margin-top:275px;
+    position:fixed;
+}
+
+.Sidebar button{
+    border:none;
+    background-color: slateblue;
+    color:white;
+    font-size: 20px;
+    border-radius:30px;
+    padding:20px;
+   
+}
+
+
+.Sidebar button:hover{
+    background-color: white;
+    color:slateblue;
+}
+
+.Sidebar button:focus{
+    outline: none;
+    border:none;
+}
+
+.Content {
+    grid-row: 2/3;
+    grid-column:2/3;
+}
+
+
+
+
+
