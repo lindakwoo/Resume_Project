@@ -59,12 +59,12 @@
     left:0;
     top:0;
     position:fixed;
+    height:100vh;
     background-color:#f17108;
     /* background-image: url("https://cdn.hipwallpaper.com/i/74/55/AlD40c.jpg"); */
     background-position: center;
     background-repeat: no-repeat;
     background-size: 100%;
-    height: 100%;
     width:100%;
     z-index:-10
   }
@@ -166,6 +166,7 @@
 
   .LogIn input{
     font-size:30px;
+    margin:10px;
     text-align: center;
     border:solid lightgray;
   }
@@ -201,8 +202,86 @@
     color:white;
     padding:5px;
     border-radius: 5px;
+    font-weight: bold;
 }
 
+.SiteDesc{
+  background-image: url("newjob.jpg");
+  background-repeat: no-repeat;
+  background-size: cover;
+  height:100vh;
+  text-align: center;
+  position:absolute;
+  top:100%;
+  width:100vw;
+}
 
   
+.SiteDesc p{
+  font-family: 'Righteous', cursive;
+  width:1000px;
+  font-size: 60px;
+  color:white;
+  font-weight: bold;
+  position:absolute;
+  left:50%;
+  transform:translate(-50%,200px);
+}
   
+.SiteDesc2{
+  background-image: url("girlWithLights.jpg");
+  background-repeat: no-repeat;
+  background-size: cover;
+  /* background-color:#91f5f8; */
+  height:150vh;
+  text-align: center;
+  position:absolute;
+  width:100vw;
+  top:200%;
+}
+
+.SignInUpBtns2{
+  position:absolute;
+  top:875px;
+  left:50%;
+  transform:translate(-50%,0);
+ 
+}
+
+.SignInUpBtns2:hover{
+  cursor: pointer;
+}
+.SignInBtn2{
+  border:none;
+  color: #f17108;
+  background-color: transparent;
+
+}
+
+.SignInBtn2:hover{
+  cursor: pointer;
+  color: #91f5f8;
+}
+
+.NewUserBtn2{
+  border:none;
+  color: #f17108;
+  background-color: transparent;
+}
+
+.NewUserBtn2:hover{
+  cursor: pointer;
+  color: #91f5f8;
+}
+
+.SiteDesc2 p{
+  font-family: 'Righteous', cursive;
+  width:1000px;
+  font-size: 60px;
+  color:white;
+  font-weight: bold;
+  position:absolute;
+  left:50%;
+  transform:translate(-50%,650px);
+  color: #f17108;
+}

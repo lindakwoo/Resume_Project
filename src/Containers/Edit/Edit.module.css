@@ -125,6 +125,7 @@
     grid-row:2/3;
     grid-column:2/3;
     margin-top:10px;
+    font-weight: bold;
 }
 
 .UserPhoto button:hover{
@@ -187,6 +188,7 @@ textarea{
     color:white;
     font-size: 10pt;
     margin-right:20px;
+    font-weight: bold;
   }
 
 
@@ -233,6 +235,7 @@ textarea{
     cursor: pointer;
     box-shadow: 1px 2px black;
     margin: 4px 10px 4px 10px;
+    font-weight: bold;
 }
 
 .ChangesToPerson button:hover{

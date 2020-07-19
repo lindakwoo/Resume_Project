@@ -35,7 +35,7 @@
     position:fixed;
     top:25px;
     left:25px;
-    background-color: red;
+    background-color: white;
 }
 .UserPhoto{
   display: inline;
@@ -95,6 +95,7 @@
     font-size: 20px;
     border-radius:30px;
     padding:20px;
+    font-weight:bold;
    
 }
 

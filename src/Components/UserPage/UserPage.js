@@ -69,6 +69,7 @@ class UserPage extends Component {
         <div className={classes.UserPage}>
           <div className = {classes.Header}>
             <h1 className = {classes.Title}>{this.props.currentPerson["username"]||message }</h1>
+            <p>rezoom3.web.app/resume/{this.props.currentPerson["urlname"]} </p>
             <h2 className = {classes.Description}>{this.props.currentPerson["description"]}</h2>
             <div className = {classes.ViewName}>{viewName}</div>
           </div>

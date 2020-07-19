@@ -12,10 +12,13 @@ class NewUser extends Component {
       selectedUserPhotoFile:null,
       id:"",
       username:"",
+      urlname:"",
+      password:"",
       description:"",
       userPhotoURL:"",
       persons:[],
-      loading:false
+      loading:false,
+      urlnames:[]
     }
   }
 
@@ -37,13 +40,20 @@ class NewUser extends Component {
         newState.push({
           id:person,
           username:persons[person].username,
+          urlname:persons[person].urlname,
+          password:persons[person].password,
           description:persons[person].description,
           photo:persons[person].photo,
           projects:projects
         });
       }
       this.setState({persons:newState})
+      let urlnames = newState.map(person=>{
+        return person["urlname"];
+      })
+      this.setState({urlnames:urlnames})
     })
+    
   }
   
   photoFileSelectedHandler = event=>{
@@ -52,11 +62,21 @@ class NewUser extends Component {
 
   handleChange = (event) => {
     this.setState({[event.target.name]: event.target.value})
+    if(event.target.name==="username"){
+      let urlname = event.target.value.replace(" ", "_");
+    this.setState({urlname:urlname});
+    }
   }
+
+  alreadyUsername = ()=>{
+    return this.state.urlnames.indexOf(this.state.urlname)>0?true:false;
+  }
+
 
   handleAddNewPerson = event=>{
     event.preventDefault();
     let name = this.state.username;
+    //make sure the username is long enough
     let char = /\w/
     let count = 0;
     for(let i = 0;i<name.length;i++){
@@ -64,10 +84,12 @@ class NewUser extends Component {
         count++;
       }
     }
-    if(count>2){
+    if(count>2 && !this.alreadyUsername()){
       const personsRef = firebase.database().ref('persons');
       const person = {
         username: this.state.username,
+        urlname:this.state.urlname,
+        password:this.state.password,
         description: this.state.description,
         photo: this.state.userPhotoURL,
       }
@@ -86,9 +108,11 @@ class NewUser extends Component {
         })
       this.props.setUserName(this.state.username);
       this.props.modalClosed();  
-    } else {
+    } else if(count<=2) {
       alert("You must enter a username of at least 3 numbers or letters")
-    } 
+    } else{
+      alert("Username taken. Choose another one")
+    }
   }
   
   fileUploadHandler = ()=>{
@@ -127,6 +151,7 @@ class NewUser extends Component {
       <div className={classes.NewUser}>
           <div className = {classes.LeftSide}>
             <input type = "text" onChange = {this.handleChange} name = "username" placeholder = "Enter name"/>
+            <input type = "password" onChange = {this.handleChange} name = "password" placeholder = "Password (at least 4 characters)"/>
             <input type = "text" onChange = {this.handleChange} name = "description" placeholder = "Describe yourself briefly"/>
             <div className = {classes.CustomChooseFileContainer}>
                 <label className = {classes.CustomFileUpload}>

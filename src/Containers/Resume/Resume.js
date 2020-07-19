@@ -56,6 +56,7 @@ class Resume extends Component {
         newState.push({
           id:person,
           username:persons[person].username,
+          urlname:persons[person].urlname,
           description:persons[person].description,
           summary:persons[person].summary,
           photo:persons[person].photo,
@@ -64,10 +65,9 @@ class Resume extends Component {
           words:words
         });
       }
-      console.log(this.props.match.params.name)
       this.setState({persons:newState})
       for(let person of newState){
-        if(person.username===this.props.match.params.name){
+        if(person.urlname===this.props.match.params.name){
           this.setState({currentPerson:person})
         }
       }
@@ -78,19 +78,14 @@ class Resume extends Component {
 
 
   setCurrentPerson = ()=>{
-  let resumeName;
+    let resumeName;
     let name = this.props.match.params.name;
     let valid=false;
     for(let person of this.props.persons){
-        if(person.username==name){
+        if(person.urlname==name){
             resumeName=person;
-            valid=true;
+            this.setState({currentPerson:resumeName});
         }
-    }
-    if(valid){
-    this.setState({currentPerson:resumeName, nameValid:true,start:true});
-    }else{
-    this.setState({start:true,nameValid:false})
     }
 }
 
@@ -103,7 +98,6 @@ class Resume extends Component {
 
     let currentView = <div></div>
     let viewName = <div></div>
-    let message = <div>no such person</div>
     let page = <button onClick = {this.setCurrentPerson}>click me</button>
    
       if(this.state.view =="jobs"){
@@ -114,19 +108,20 @@ class Resume extends Component {
         viewName = <div>Personal Projects:</div>
       }else{
         currentView = <Main currentPerson = {this.state.currentPerson} />
-        viewName = <div>Summary / Characteristics: </div>
+        viewName = <div>Summary and Characteristics: </div>
       }
 
-      return !this.state.nameValid? 
-      <div>no person by the name {this.props.params.match.name}</div>:
+      return this.state.currentPerson['username']? 
       (
         <div className={classes.UserPage}>
           <div className = {classes.Header}>
-            <h1 className = {classes.Title}>{this.state.currentPerson["username"]|| message}</h1>
+            <h1 className = {classes.Title}>{this.state.currentPerson["username"]}</h1>
             <h2 className = {classes.Description}>{this.state.currentPerson["description"]}</h2>
             <h2 className = {classes.ViewName}>{viewName}</h2>
           </div>
-          <img className = {classes.UserPhoto} src = {this.state.currentPerson["photo"]}/>
+          <div className = {classes.ImageCropper}>
+            <img className = {classes.UserPhoto} src = {this.state.currentPerson["photo"]}/>
+          </div>
           <div className = {classes.Sidebar}>
             <button onClick = {this.setView} name = "main">Summary</button>
             <button onClick = {this.setView} name = "jobs">Jobs</button>
@@ -134,7 +129,7 @@ class Resume extends Component {
           </div>  
           <div className = {classes.Content}> {currentView} </div>  
         </div>    
-      );
+      ):  <div className = {classes.NoSuchPerson}>{this.props.match.params.name} is an unrecognized name</div>;
   }
  
 }

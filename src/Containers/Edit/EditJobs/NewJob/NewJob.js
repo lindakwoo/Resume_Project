@@ -61,7 +61,7 @@ class NewJob extends Component {
             <textarea cols = "45" rows="2" type = "textarea" onChange={this.handleChange} value = {this.state.jobDescription3} name = "jobDescription3" placeholder = "Accomplishment"/>
           </div>
         </div>
-        <button className = {classes.AddNewJob}onClick = {this.handleAddNewJob} >submit new job</button>
+        <button className = {classes.AddNewJob}onClick = {this.handleAddNewJob} >Submit New Job</button>
       </div>
     );
   } 

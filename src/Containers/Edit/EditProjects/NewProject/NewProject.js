@@ -89,7 +89,7 @@ class NewProject extends Component {
               </div>
               <div className = {classes.PhotoBtns}>
                 <input className = {classes.ChooseFile} type = "file" onChange = {this.projectFileSelectedHandler} placeholder = "select project photo"/>
-                <button onClick = {this.uploadProjectPhoto} >upload photo</button> 
+                <button onClick = {this.uploadProjectPhoto} >Upload photo</button> 
               </div>
           </div>
         </div>

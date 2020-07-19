@@ -20,7 +20,8 @@ class ResumeBuilder extends Component {
     this.state = {
       view:"home",
       persons:[],
-      currentUsername:"Linda Woo",
+      currentUsername:"",
+      password:"",
       currentUserId:"",
       currentPerson:{},
       loggingIn:false,
@@ -30,8 +31,8 @@ class ResumeBuilder extends Component {
   }  
 
   componentDidMount(){
+
     const personsRef = firebase.database().ref('persons');
-    console.log(personsRef);
     personsRef.on('value', (snapshot)=>{
       let persons = snapshot.val();
       let newState = [];
@@ -66,6 +67,8 @@ class ResumeBuilder extends Component {
         newState.push({
           id:person,
           username:persons[person].username,
+          urlname:persons[person].urlname,
+          password:persons[person].password,
           description:persons[person].description,
           summary:persons[person].summary,
           photo:persons[person].photo,
@@ -96,12 +99,24 @@ class ResumeBuilder extends Component {
     for(let person of persons){
       if(person.username===this.state.currentUsername){
         validUserName = true;
+        if(person.password===this.state.password){
         this.setState({currentPerson:person})
+        }else{
+          alert("invalid password");
+          this.setState({currentPerson:{}});
+        }
       }
     }
     if(!validUserName){
-      alert("no such user name")
+      alert("no such user name");
+      this.setState({currentPerson:{}});
     }
+
+  }
+
+  logInHandler=()=>{
+    this.setState({loggingIn:false});
+    this.setCurrentPerson();
   }
 
   handleChange = (event) => {
@@ -116,11 +131,6 @@ class ResumeBuilder extends Component {
     this.setState({addingNewUser:true});
   }
 
-  logInHandler = ()=>{
-    this.setState({loggingIn:false});
-    this.setCurrentPerson();
-  }
-
   closeLogin=()=>{
     this.setState({loggingIn:false})
   }
@@ -132,7 +142,7 @@ class ResumeBuilder extends Component {
   
  
   render(){
-
+    
     const myUserPage = (props)=>{
       return (
         <div>
@@ -161,7 +171,7 @@ class ResumeBuilder extends Component {
           closeLogin = {this.closeLogin}
           logInHandler = {this.logInHandler}
           handleChange = {this.handleChange}
-          setUserName = {this.setUserName}
+          setUserName = {this.setUserName}   
           {...props}
           />
 
@@ -194,12 +204,11 @@ class ResumeBuilder extends Component {
     return(
   
       <div className = {classes.ResumeBuilder}>
-          
           <Switch>
               <Route path = '/' exact render = {myLanding}/>
               <Route path = '/MyPage' exact render = {myUserPage}/>
               <Route path = '/EditMyPage' exact render = {myForm}/>
-              <Route path = '/:name' render = {resume} />
+              <Route path = '/resume/:name' render = {resume} />
           </Switch>
       </div>
     )

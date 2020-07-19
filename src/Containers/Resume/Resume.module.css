@@ -1,5 +1,5 @@
 .UserPage {
-    background-color: rgb(250, 247, 220);
+    background-color: white;
     top:0;
     left:0;
     width:100%;
@@ -20,19 +20,28 @@
     font-size: 24px;
     height:100vh;
     width:7000px;
-    background-color:rgb(250, 247, 220) ;
+    background-color:white ;
     z-index:1000;
     left:0;
 }
 
-.UserPhoto {
-    grid-area:1/1 /2/2;
-    max-height: 220px;
-    width:150px;
-    position: fixed;
+
+.ImageCropper{
+    width: 150px;
+    height: 150px;
+    overflow: hidden;
+    border-radius: 50%;
+    position:fixed;
     top:25px;
-    left:25px
-  
+    left:25px;
+    background-color: white;
+}
+.UserPhoto{
+  display: inline;
+  margin: 0 auto;
+  max-height: 125%;
+  width: auto;
+  min-width:100%
 }
 
 .Header {
@@ -41,16 +50,19 @@
     position:fixed;
     left:200px;
     width:100%;
-    background-color: rgb(250, 247, 220);
+    background-color: white;
     z-index:2
 }
 
 .Title {
     font-size: 50px;
     margin-bottom:0;
+    font-family: 'Righteous', cursive;
 }
 .Description{
     margin-top:0;
+    font-family: 'Quicksand', sans-serif;
+    font-weight:bolder;
 }
 
 .ViewName{
@@ -70,7 +82,7 @@
 
 .Sidebar button{
     border:none;
-    background-color: slateblue;
+    background-color: orangered;
     color:white;
     font-size: 20px;
     border-radius:30px;
@@ -80,8 +92,8 @@
 
 
 .Sidebar button:hover{
-    background-color: white;
-    color:slateblue;
+    background-color: #91f5f8;
+    color:orangered;
 }
 
 .Sidebar button:focus{
@@ -94,6 +106,17 @@
     grid-column:2/3;
 }
 
+.NoSuchPerson{
+    opacity:1;
+    animation:showNoSuchPerson .5s ease-out forwards;
+}
+
+@keyframes showNoSuchPerson{
+    0%{opacity:0;}
+    50%{opacity:0;}
+    75%{opacity:0;}
+    100%{opacity:1;}
+    }
 
 
 
