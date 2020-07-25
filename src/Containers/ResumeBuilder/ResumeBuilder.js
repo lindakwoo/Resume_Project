@@ -26,17 +26,22 @@ class ResumeBuilder extends Component {
       currentPerson:{},
       loggingIn:false,
       addingNewUser:false,
-      number:0
+      number:0,
+      top:0
     }
   }  
 
+    //get database from firebase and load as an array of persons
   componentDidMount(){
+    this.setState({currentUsername:""});
+    this.setState({password:""});
 
     const personsRef = firebase.database().ref('persons');
     personsRef.on('value', (snapshot)=>{
       let persons = snapshot.val();
       let newState = [];
       for(let person in persons){
+        //because firebase does not allow arrays, convert object to array
         let projects = []
         for(let project in persons[person]['projects']){
           projects.push({
@@ -87,8 +92,6 @@ class ResumeBuilder extends Component {
     })
   }
 
-
-
   setUserName =(name)=>{
     this.setState({currentUsername:name});
   }
@@ -123,12 +126,12 @@ class ResumeBuilder extends Component {
     this.setState({[event.target.name]: event.target.value})
   }
 
-  signIn = ()=>{
-    this.setState({loggingIn:true});
+  signIn = (top)=>{
+    this.setState({loggingIn:true, top:top});
   } 
 
-  newUser =()=>{
-    this.setState({addingNewUser:true});
+  newUser =(top)=>{
+    this.setState({addingNewUser:true, top:top});
   }
 
   closeLogin=()=>{
@@ -172,13 +175,14 @@ class ResumeBuilder extends Component {
           logInHandler = {this.logInHandler}
           handleChange = {this.handleChange}
           setUserName = {this.setUserName}   
+          top={this.state.top}
           {...props}
           />
 
       )
     }
 
-    const myForm = (props)=>{
+    const edit = (props)=>{
       return(
         <div>
           <NavigationItems/>
@@ -207,7 +211,7 @@ class ResumeBuilder extends Component {
           <Switch>
               <Route path = '/' exact render = {myLanding}/>
               <Route path = '/MyPage' exact render = {myUserPage}/>
-              <Route path = '/EditMyPage' exact render = {myForm}/>
+              <Route path = '/EditMyPage' exact render = {edit}/>
               <Route path = '/resume/:name' render = {resume} />
           </Switch>
       </div>

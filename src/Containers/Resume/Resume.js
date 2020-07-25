@@ -13,92 +13,92 @@ import Main from "../../Components/UserPage/Main/Main";
 class Resume extends Component {
    
   state = {
-    persons : [],
-    currentPerson:{username:"", description:"", photo:"", words:[], projects:[], jobs:[], summary:""},
-    view:"main",
-    start:true,
-    name:this.props.match.params.name,
-    nameValid:true
+      persons : [],
+      currentPerson:{username:"", description:"", photo:"", words:[], projects:[], jobs:[], summary:""},
+      view:"main",
+      start:true,
+      name:this.props.match.params.name,
+      nameValid:true
   }
+
+  //get database from firebase and load as an array of persons
   componentDidMount(){
-    const personsRef = firebase.database().ref('persons');
-    personsRef.on('value', (snapshot)=>{
-      let persons = snapshot.val();
-      let newState = [];
-      for(let person in persons){
-        let projects = []
-        for(let project in persons[person]['projects']){
-          projects.push({
-            id:project,
-            projectTitle:persons[person]['projects'][project].projectTitle,
-            projectDescription:persons[person]['projects'][project].projectDescription,
-            photo: persons[person]['projects'][project].photo
-          })
+      const personsRef = firebase.database().ref('persons');
+      personsRef.on('value', (snapshot)=>{
+        let persons = snapshot.val();
+        let newState = [];
+        //because firebase does not allow arrays, convert object to array
+        for(let person in persons){
+          let projects = []
+          for(let project in persons[person]['projects']){
+            projects.push({
+              id:project,
+              projectTitle:persons[person]['projects'][project].projectTitle,
+              projectDescription:persons[person]['projects'][project].projectDescription,
+              photo: persons[person]['projects'][project].photo
+            })
+          }
+          let jobs = []
+          for(let job in persons[person]["jobs"]){
+            jobs.push({
+              id:job,
+              jobEmployer:persons[person]['jobs'][job].jobEmployer,
+              jobTitle:persons[person]['jobs'][job].jobTitle,
+              jobDescription:persons[person]['jobs'][job].jobDescription,
+              jobDescription2:persons[person]['jobs'][job].jobDescription2,
+              jobDescription3:persons[person]['jobs'][job].jobDescription3
+            })
+          }
+          let words =[]
+          for(let word in persons[person]["words"]){
+            words.push({
+              id:word,
+              word:persons[person]['words'][word]
+            })
+          }
+          newState.push({
+            id:person,
+            username:persons[person].username,
+            urlname:persons[person].urlname,
+            description:persons[person].description,
+            summary:persons[person].summary,
+            photo:persons[person].photo,
+            projects:projects,
+            jobs:jobs,
+            words:words
+          });
         }
-        let jobs = []
-        for(let job in persons[person]["jobs"]){
-          jobs.push({
-            id:job,
-            jobEmployer:persons[person]['jobs'][job].jobEmployer,
-            jobTitle:persons[person]['jobs'][job].jobTitle,
-            jobDescription:persons[person]['jobs'][job].jobDescription,
-            jobDescription2:persons[person]['jobs'][job].jobDescription2,
-            jobDescription3:persons[person]['jobs'][job].jobDescription3
-          })
+        this.setState({persons:newState})
+        for(let person of newState){
+          if(person.urlname===this.props.match.params.name){
+            this.setState({currentPerson:person})
+          }
         }
-        let words =[]
-        for(let word in persons[person]["words"]){
-          words.push({
-            id:word,
-            word:persons[person]['words'][word]
-          })
-        }
-        newState.push({
-          id:person,
-          username:persons[person].username,
-          urlname:persons[person].urlname,
-          description:persons[person].description,
-          summary:persons[person].summary,
-          photo:persons[person].photo,
-          projects:projects,
-          jobs:jobs,
-          words:words
-        });
-      }
-      this.setState({persons:newState})
-      for(let person of newState){
-        if(person.urlname===this.props.match.params.name){
-          this.setState({currentPerson:person})
-        }
-      }
-      
-    })
+        
+      })
   }
 
 
 
   setCurrentPerson = ()=>{
-    let resumeName;
-    let name = this.props.match.params.name;
-    let valid=false;
-    for(let person of this.props.persons){
-        if(person.urlname==name){
-            resumeName=person;
-            this.setState({currentPerson:resumeName});
-        }
-    }
-}
+      let resumeName;
+      let name = this.props.match.params.name;
+      let valid=false;
+      for(let person of this.props.persons){
+          if(person.urlname==name){
+              resumeName=person;
+              this.setState({currentPerson:resumeName});
+          }
+      }
+  }
 
   setView = (event)=>{
-    this.setState({view:event.target.name})
+      this.setState({view:event.target.name})
   }
 
   render(){
-    
-
-    let currentView = <div></div>
-    let viewName = <div></div>
-    let page = <button onClick = {this.setCurrentPerson}>click me</button>
+      let currentView = <div></div>
+      let viewName = <div></div>
    
       if(this.state.view =="jobs"){
         currentView = <Jobs currentPerson={this.state.currentPerson}/>

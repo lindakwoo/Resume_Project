@@ -206,7 +206,7 @@
 }
 
 .SiteDesc{
-  background-image: url("newjob.jpg");
+  background-image: url("../../images/newjob.jpg");
   background-repeat: no-repeat;
   background-size: cover;
   height:100vh;
@@ -229,7 +229,7 @@
 }
   
 .SiteDesc2{
-  background-image: url("girlWithLights.jpg");
+  background-image: url("../../images/girlWithLights.jpg");
   background-repeat: no-repeat;
   background-size: cover;
   /* background-color:#91f5f8; */
