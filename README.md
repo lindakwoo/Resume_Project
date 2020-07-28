@@ -1,3 +1,5 @@
+This project was created by me, Linda Woo, as a personal project, mainly to practice my React skills.  It is a site for late-teen/young-adult job seekers to build their online resumes for employers to see their job experience and prior projects or interests online.  Here they can upload pictures of projects they are proud of, whether from school or otherwise.  The site provides users the space for creating and editing their site, and a user URL to provide prospective employers to view their site. The project uses Firebase as the backend database.
+
 This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
 
 ## Available Scripts
